@@ -239,3 +239,170 @@ main() {
   }
 }
 ```
+
+# Null Aware Operators
+
+```dart
+// Null Aware Operator
+// (?.), (??), (??=)
+
+class Num {
+  int num = 10;
+}
+
+main() {
+  var n;
+
+  // Checks if n is a valid object or not.
+  var number_no_default_value = n?.num;
+  print(number_no_default_value);
+
+  // Checks if n is a valid object and then prints a deafult output (10) if it is null.
+  var number_with_default_value = n?.num ?? 10;
+  print(number_with_default_value);
+
+  // Checks if number is a valid object, if it isn't then it is assigned the value of 100.
+  var number;
+  number ??= 100;
+
+  print(number);
+}
+```
+
+# Ternary Operators
+
+```dart
+// Ternary Operator
+
+void main() {
+  int x = 113;
+  var result = x % 2 == 0 ? 'Even' : 'Odd';
+
+  print(result);
+}
+```
+
+# Type Test
+
+```dart
+// Type test
+
+void main() {
+  var x = 100.23;
+
+  if (x is int) {
+    print("Integer");
+  } else if (x is double) {
+    print("Double");
+  } else {
+    print("IDKK.");
+  }
+}
+```
+
+# Conditional Statements
+
+```dart
+// Conditional Statements
+
+void main() {
+  int number = 91;
+  if (number % 2 == 0) {
+    print("Divisible by 2");
+  } else if (number % 3 == 0) {
+    print("Divisible by 3");
+  } else {
+    print("Neither divisible by 2 nor 3.");
+  }
+
+  int choice = 2;
+  switch (choice) {
+    case 0:
+      print("Choice 0");
+      break;
+    case 1:
+      print("Choice 1");
+      break;
+    case 2:
+      print("Choice 2");
+      break;
+    default:
+      print("Invalid Choice");
+      break;
+  }
+}
+```
+
+# Loop
+
+```dart
+// Loops
+
+void printNum(num) {
+  print(num);
+}
+
+void main() {
+  // Standard for loop
+  for (var i = 1; i <= 10; ++i) {
+    print(i);
+  }
+
+  print("");
+
+  // for-in loop
+  var numbers = [1, 2, 3];
+  for (var n in numbers) {
+    print(n);
+  }
+
+  print("");
+
+  for (var i = 0; i < numbers.length; ++i) {
+    print(numbers[i]);
+  }
+
+  print("");
+
+  // forEach loop
+  numbers.forEach((n) => print(n));
+
+  print("");
+
+  // forEach loop without arrow function
+  numbers.forEach(printNum);
+
+  print("");
+
+  // while loop
+  int num = 5;
+
+  while (num > 0) {
+    print(num);
+    num--;
+  }
+
+  print("");
+
+  // do-while loop
+  num = 5;
+  do {
+    print(num);
+    num--;
+  } while (num > 0);
+}
+```
+
+# Break And Continue
+
+```dart
+// break and continue
+
+void main() {
+  for (var i = 0; i < 10; i++) {
+    if (i % 2 != 0) continue;
+    if (i > 8) break;
+    print(i);
+  }
+}
+```
