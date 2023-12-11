@@ -406,3 +406,119 @@ void main() {
   }
 }
 ```
+
+# Collections- List, Set, Map
+
+## List
+
+```dart
+// Collection- List (also known as array in other languages).
+
+void main() {
+  List myList = ["Tanuv", "Vunat", 21, 102];
+
+  // Can also use var, complier will make it into a list by type inference.
+  var age = [18, 19, 21];
+
+  // Statically typed list
+  // If you use const keyword, then the list becomes immutable.
+  List<String> names = const ["Tanuv", "Nair", "Jack"];
+
+  // This does not make a copy, it is pointing to the same list of item.
+  var myList2 = myList;
+
+  // To actually copy we can use the spread operator '...'.
+  var myListCopy = [...myList];
+
+  myList[0] = "Rian";
+
+  // Prints out entire list.
+  for (var item in myList2) {
+    print(item);
+  }
+
+  for (var item in myListCopy) {
+    print(item);
+  }
+}
+```
+
+## Set
+
+```dart
+// Collection- Set (Unordered collection of unique items).
+
+void main() {
+  var halogens = {"Fluorine", "Chlorine"};
+
+  // To define empty set, you have to set the datatype before the curly braces or after Set.
+  var stringSet = <String>{};
+  Set<String> emptySet = {};
+
+  for (var halogen in halogens) {
+    print(halogen);
+  }
+}
+```
+
+## Map
+
+```dart
+// Collection- Map (also called dictionary in other languages such as python)
+
+void main() {
+  var myMap = {36: "Tanuv Nair", "College": "Somaiya"};
+
+  print(myMap[36]);
+  print(myMap["College"]);
+
+  // To create an empty map
+  var gifts = Map();
+
+  // Adding to empty map
+  gifts["First"] = "Mango";
+}
+```
+
+# Function
+
+Each function is an object of class ‘Function’. A nameless function is called anonymous function in Dart.
+
+```dart
+// Function
+
+// dynamic type returns any type.
+dynamic square(var num) {
+  return num * num;
+}
+
+// Arrow function =>
+void showOutput(var message) => print(message);
+
+// Positional parameter
+dynamic sum(var num1, var num2) => num1 + num2;
+
+// Named parameter
+dynamic difference({var num1, var num2}) => num1 - num2;
+
+// Positional and Named parameter mixed
+dynamic multiply(var num1, {var num2 = 1}) => num1 * num2;
+
+dynamic name(var firstName, [var lastName = ""]) =>
+    print("Your name is $firstName $lastName");
+
+void main() {
+  showOutput(square(2));
+
+  var list = ["apples", "banana", "oranges"];
+
+  // Anonymous function
+  list.forEach((item) {
+    print(item);
+  });
+
+  print(multiply(12));
+
+  name("Tanuv");
+}
+```
