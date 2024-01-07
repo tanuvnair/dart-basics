@@ -522,3 +522,184 @@ void main() {
   name("Tanuv");
 }
 ```
+
+# Class
+
+```dart
+class Person {
+  String name = "";
+  int age = 0;
+
+  //  the two examples below makes the values immutable after assignement
+
+  // runtime
+  final pi = 3.14;
+
+  // compile time
+  static const double e = 2.7182;
+
+  Person(String name, [int age = 18]) {
+    this.name = name;
+    this.age = age;
+  }
+
+  Person.guest() {
+    name = "Guest";
+    age = 18;
+  }
+
+  void showOutput() {
+    print(name);
+    print(age);
+  }
+}
+
+void main() {
+  Person person1 = new Person("Tanuv", 19);
+  person1.showOutput();
+
+  Person person2 = new Person("Vunat");
+  person2.showOutput();
+
+  Person person3 = new Person.guest();
+  person3.showOutput();
+}
+```
+
+# Class Inheritance
+
+```dart
+class Vehicle {
+  String model;
+  int year;
+
+  Vehicle(this.model, this.year) {
+    print(this.model);
+    print(this.year);
+  }
+
+  void showOutput() {
+    print(model);
+    print(year);
+  }
+}
+
+class Car extends Vehicle {
+  double price;
+
+  Car(String model, int year, this.price) : super(model, year);
+
+  void showOutput() {
+    super.showOutput();
+    print(price);
+  }
+}
+
+void main() {
+  Car myCar = new Car("Brio", 2014, 300000);
+  myCar.showOutput();
+}
+```
+
+# Method Overriding
+
+```dart
+class X {
+  String name;
+
+  X(this.name);
+
+  void showOutput() {
+    print(this.name);
+  }
+}
+
+class Y extends X {
+  Y(String name) : super(name);
+
+  @override
+  void showOutput() {
+    print(this.name);
+    print("Hello!");
+  }
+}
+
+void main() {
+  Y myY = new Y("Tanuv");
+  myY.showOutput();
+}
+```
+
+# Getters and Setters
+
+```dart
+class Person {
+  String name;
+  int age;
+
+  Person(this.name, this.age);
+
+  // Does not have a parameter.
+  int get getAge {
+    return age;
+  }
+
+  // Needs atleast a single parameter, recommended to not have a return typer for setter.
+  set setAge(int value) {
+    age = value;
+  }
+}
+
+class Rectangle {
+  num x, y, width, height;
+
+  Rectangle(this.x, this.y, this.width, this.height);
+
+  num get getX => x;
+  num get getY => y;
+
+  set setX(int value) => x = value;
+  set setY(int value) => y = value;
+}
+
+void main() {
+  Rectangle myRect = new Rectangle(3, 5, 20, 25);
+
+  myRect.setX = 20;
+  myRect.setY = 50;
+
+  print(myRect.getX);
+  print(myRect.getY);
+}
+```
+
+# Exception Handling
+
+```dart
+int mustGreaterThanZero(int val) {
+  if (val <= 0) {
+    throw Exception('Value must be greater than zero');
+  }
+  return val;
+}
+
+void verifyTheValue(var val) {
+  var valueVerification;
+
+  try {
+    valueVerification = mustGreaterThanZero(val);
+  } catch (e) {
+    print(e);
+  } finally {
+    if (valueVerification == null) {
+      print("Value is not accepted");
+    } else {
+      print("Value verified: $valueVerification");
+    }
+  }
+}
+
+void main() {
+  verifyTheValue(-123);
+}
+```
